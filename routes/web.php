@@ -26,4 +26,10 @@ Route::group(['middleware'=>'admin'], function (){
     Route::get('/admin', function (){
         return view('admin.index');
     });
+    Route::resource('admin/campuses', 'AdminCampusesController',['names'=>[
+        'index'=>'admin.campuses.index',
+        'create'=>'admin.campuses.create',
+        'store'=>'admin.campuses.store',
+        'edit'=>'admin.campuses.edit'
+    ]]);
 });

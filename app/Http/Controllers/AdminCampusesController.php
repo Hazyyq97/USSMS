@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Campus;
 use Illuminate\Http\Request;
 
-class AdminCampusController extends Controller
+class AdminCampusesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +14,8 @@ class AdminCampusController extends Controller
      */
     public function index()
     {
-        //
+        $campuses = Campus::all();
+        return view('admin.campuses.index', compact('campuses'));
     }
 
     /**
