@@ -30,7 +30,6 @@ Route::group(['middleware'=>'admin'], function (){
         'index'=>'admin.campuses.index',
         'create'=>'admin.campuses.create',
         'store'=>'admin.campuses.store',
-        'edit'=>'admin.campuses.edit',
-        'show'=>'admin.campuses.show'
+        'edit'=>'admin.campuses.edit'
     ]]);
 });
