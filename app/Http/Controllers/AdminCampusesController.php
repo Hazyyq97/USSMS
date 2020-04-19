@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Campus;
 use App\Http\Requests\CampusRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class AdminCampusesController extends Controller
 {
@@ -49,7 +50,8 @@ class AdminCampusesController extends Controller
      */
     public function show($id)
     {
-        //
+        $campus = Campus::findOrFail($id);
+        return view('admin.campuses.show', compact('campus'));
     }
 
     /**
@@ -60,7 +62,8 @@ class AdminCampusesController extends Controller
      */
     public function edit($id)
     {
-        //
+        $campus =Campus::findOrFail($id);
+        return view('admin.campuses.edit', compact('campus'));
     }
 
     /**
@@ -72,7 +75,9 @@ class AdminCampusesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $campus = Campus::findOrFail($id);
+        $campus->update($request->all());
+        return redirect('admin/campuses');
     }
 
     /**
@@ -83,6 +88,8 @@ class AdminCampusesController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Campus::findOrFail($id)->delete();
+        Session::flash('deleted_campus', 'The campus has been deleted');
+        return redirect('admin/campuses');
     }
 }
