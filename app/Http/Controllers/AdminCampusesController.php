@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Campus;
+use App\Http\Requests\CampusRequest;
 use Illuminate\Http\Request;
 
 class AdminCampusesController extends Controller
@@ -25,7 +26,7 @@ class AdminCampusesController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.campuses.create');
     }
 
     /**
@@ -34,9 +35,10 @@ class AdminCampusesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CampusRequest $request)
     {
-        //
+        Campus::create($request->all());
+        return redirect('admin/campuses');
     }
 
     /**

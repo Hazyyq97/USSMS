@@ -30,14 +30,15 @@
                     <td><button class="btn btn-success">Edit</button> </td>
                     <td><button class="btn btn-danger">Delete</button> </td>
                 </tr>
+                    @endforeach
+                @endif
                 </tbody>
             </table>
         </div>
         <!-- /.card-body -->
     </div>
 
-    @endforeach
-    @endif
+
 
 
 @endsection
