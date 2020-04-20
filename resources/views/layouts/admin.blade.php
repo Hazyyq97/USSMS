@@ -36,7 +36,7 @@
     <nav class="main-header navbar navbar-expand navbar-white navbar-light">
         <!-- Left navbar links -->
         <ul class="navbar-nav">
-            <li>UNIKL SPORT SCORING MANAGEMENT SYSTEM</li>
+            <li style="padding:10px">UNIKL SPORT SCORING MANAGEMENT SYSTEM</li>
         </ul>
 
 

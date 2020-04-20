@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Campus;
-use App\Http\Requests\CampusRequest;
+use App\Event;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Session;
 
-class AdminCampusesController extends Controller
+class AdminEventsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +14,8 @@ class AdminCampusesController extends Controller
      */
     public function index()
     {
-        $campuses = Campus::all();
-        return view('admin.campuses.index', compact('campuses'));
+        $events = Event::all();
+        return view('admin.events.index', compact('events'));
     }
 
     /**
@@ -27,7 +25,7 @@ class AdminCampusesController extends Controller
      */
     public function create()
     {
-        return view('admin.campuses.create');
+        //
     }
 
     /**
@@ -36,10 +34,9 @@ class AdminCampusesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CampusRequest $request)
+    public function store(Request $request)
     {
-        Campus::create($request->all());
-        return redirect('admin/campuses');
+        //
     }
 
     /**
@@ -50,8 +47,7 @@ class AdminCampusesController extends Controller
      */
     public function show($id)
     {
-        $campus = Campus::findOrFail($id);
-        return view('admin.campuses.show', compact('campus'));
+        //
     }
 
     /**
@@ -62,8 +58,7 @@ class AdminCampusesController extends Controller
      */
     public function edit($id)
     {
-        $campus =Campus::findOrFail($id);
-        return view('admin.campuses.edit', compact('campus'));
+        //
     }
 
     /**
@@ -75,9 +70,7 @@ class AdminCampusesController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $campus = Campus::findOrFail($id);
-        $campus->update($request->all());
-        return redirect('admin/campuses');
+        //
     }
 
     /**
@@ -88,8 +81,6 @@ class AdminCampusesController extends Controller
      */
     public function destroy($id)
     {
-        Campus::findOrFail($id)->delete();
-        Session::flash('deleted_campus', 'The campus has been deleted');
-        return redirect('admin/campuses');
+        //
     }
 }
