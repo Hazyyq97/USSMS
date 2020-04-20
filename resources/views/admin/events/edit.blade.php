@@ -3,12 +3,13 @@
 @section('content')
     <!-- Content Wrapper. Contains page content -->
 
+
     <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Create Event</h1>
+                    <h1>Edit Event</h1>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -27,9 +28,11 @@
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
-
+                        <div class="class col-sm-3">
+                            <img src="{{$event->photo->file}}" alt="" class="img-responsive">
+                        </div>
                         <div class="card-body">
-                            {!! Form::open(['method' => 'POST', 'action' => 'AdminEventsController@store', 'files'=>true]) !!}
+                            {!! Form::model($event,['method' => 'PATCH', 'action' => ['AdminEventsController@update', $event->id], 'files'=>true]) !!}
 
                             <div class="form-group">
                                 {!! Form::label('name', 'Event Name: ') !!}
@@ -43,7 +46,7 @@
 
                             <div class="form-group">
                                 {!! Form::label('campus_id', 'Organizer: ') !!}
-                                {!! Form::select('campus_id', [''=>'Choose Campus'] + $campuses, null,  ['class'=>'form-control']) !!}
+                                {!! Form::select('campus_id', [''=>'Choose Categories'] + $campuses, null,  ['class'=>'form-control']) !!}
                             </div>
 
                             <div class="form-group">
@@ -51,7 +54,7 @@
                                 {!! Form::text('date_range', null, ['class'=>'form-control', 'placeholder'=>'Enter start date', 'id'=>'datepicker']) !!}
                             </div>
 
-<br>
+                            <br>
                             <div class="form-group">
                                 {!! Form::label('photo_id', 'Photo: ') !!}
                                 {!! Form::file('photo_id') !!}
@@ -77,6 +80,7 @@
             <!-- /.row -->
         </div><!-- /.container-fluid -->
     </section>
+
     <!-- /.content -->
     @include('includes.file_errors')
 
@@ -114,7 +118,4 @@
 
     </script>
 @endsection
-
-
-
 

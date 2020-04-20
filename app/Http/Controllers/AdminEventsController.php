@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Campus;
 use App\Event;
+use App\Http\Requests\EventRequest;
+use App\Photo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class AdminEventsController extends Controller
 {
@@ -25,7 +29,8 @@ class AdminEventsController extends Controller
      */
     public function create()
     {
-        //
+        $campuses = Campus::pluck('shortname', 'id')->all();
+        return view('admin.events.create', compact('campuses'));
     }
 
     /**
@@ -34,9 +39,21 @@ class AdminEventsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(EventRequest $request)
     {
-        //
+        $input = $request->all();
+
+        if($file= $request->file('photo_id')){
+            $name = time() . $file->getClientOriginalName();
+            $file->move('images', $name);
+            $photo = Photo::create(['file'=>$name]);
+            $input['photo_id'] = $photo->id;
+        }
+
+        Event::create($input);
+        return redirect('admin/events');
+
+
     }
 
     /**
@@ -47,7 +64,8 @@ class AdminEventsController extends Controller
      */
     public function show($id)
     {
-        //
+        $event = Event::findOrFail($id);
+        return view('admin.events.show', compact('event'));
     }
 
     /**
@@ -58,7 +76,9 @@ class AdminEventsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $event = Event::findOrFail($id);
+        $campuses = Campus::pluck('shortname', 'id')->all();
+        return view('admin.events.edit', compact('event', 'campuses'));
     }
 
     /**
@@ -70,7 +90,18 @@ class AdminEventsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+
+        if($file= $request->file('photo_id')){
+            $name = time() . $file->getClientOriginalName();
+            $file->move('images', $name);
+            $photo = Photo::create(['file'=>$name]);
+            $input['photo_id'] = $photo->id;
+        }
+
+        Event::whereId($id)->first()->update($input);
+        return redirect('admin/events');
+
     }
 
     /**
@@ -81,6 +112,9 @@ class AdminEventsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Event::findOrFail($id)->delete();
+        Session::flash('deleted_event', 'The event has been deleted');
+        return redirect('admin/events');
+
     }
 }

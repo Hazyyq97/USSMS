@@ -33,4 +33,11 @@ Route::group(['middleware'=>'admin'], function (){
         'edit'=>'admin.campuses.edit',
         'show'=>'admin.campuses.show'
     ]]);
+    Route::resource('admin/events', 'AdminEventsController',['names'=>[
+        'index'=>'admin.events.index',
+        'create'=>'admin.events.create',
+        'store'=>'admin.events.store',
+        'edit'=>'admin.events.edit',
+        'show'=>'admin.events.show'
+    ]]);
 });

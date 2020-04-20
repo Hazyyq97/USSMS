@@ -8,14 +8,17 @@ class Event extends Model
 {
     protected $fillable=[
         'name',
-        'organizer',
+        'campus_id',
         'detail',
-        'date_start',
-        'date_end',
+        'date_range',
         'photo_id',
     ];
 
     public function photo(){
         return $this->belongsTo('App\Photo');
+    }
+
+    public function campus(){
+        return $this->belongsTo('App\Campus');
     }
 }
