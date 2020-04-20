@@ -161,13 +161,13 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{route('admin.sports.index')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>All Sport</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{route('admin.sports.create')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Create Sport</p>
                                 </a>
@@ -203,7 +203,7 @@
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-users"></i>
                             <p>
-                                Team Manager
+                                Manager
                                 <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>

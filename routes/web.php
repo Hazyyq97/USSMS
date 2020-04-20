@@ -33,11 +33,20 @@ Route::group(['middleware'=>'admin'], function (){
         'edit'=>'admin.campuses.edit',
         'show'=>'admin.campuses.show'
     ]]);
+
     Route::resource('admin/events', 'AdminEventsController',['names'=>[
         'index'=>'admin.events.index',
         'create'=>'admin.events.create',
         'store'=>'admin.events.store',
         'edit'=>'admin.events.edit',
         'show'=>'admin.events.show'
+    ]]);
+
+    Route::resource('admin/sports', 'AdminSportsController',['names'=>[
+        'index'=>'admin.sports.index',
+        'create'=>'admin.sports.create',
+        'store'=>'admin.sports.store',
+        'edit'=>'admin.sports.edit',
+        'show'=>'admin.sports.show'
     ]]);
 });
