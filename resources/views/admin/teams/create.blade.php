@@ -1,12 +1,14 @@
 @extends('layouts.admin')
 
 @section('content')
+    <!-- Content Wrapper. Contains page content -->
 
+    <!-- Content Header (Page header) -->
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Campus Detail</h1>
+                    <h1>Create Team</h1>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -21,41 +23,38 @@
                     <!-- jquery validation -->
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">{{$campus->shortname}}</h3>
+                            <h3 class="card-title">Universiti Kuala Lumpur</h3>
                         </div>
                         <!-- /.card-header -->
                         <!-- form start -->
 
                         <div class="card-body">
+                            {!! Form::open(['method' => 'POST', 'action' => 'AdminTeamsController@store', 'files'=>true]) !!}
+
                             <div class="form-group">
-                                <div class="card-body">
-                                    <table class="table table-unbordered">
-                                        <tbody>
-                                        <tr>
-                                            <td>Campus Full Name: </td>
-                                            <td><p class="text-primary">{{$campus->fullname}} </p> </td>
-                                        </tr>
-                                        <tr>
+                                {!! Form::label('name', 'Team Name: ') !!}
+                                {!! Form::text('name', null, ['class'=>'form-control', 'placeholder'=>'Enter team name']) !!}
+                            </div>
 
-                                            <td>Campus Phone Number: </td>
-                                            <td><p class="text-primary">{{$campus->phonenumber}}</p> </td>
-                                        </tr>
-                                        <tr>
 
-                                            <td>Campus Address</td>
-                                            <td><p class="text-primary">{{$campus->address}}</p> </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                            <div class="form-group">
+                                {!! Form::label('event_id', 'Event: ') !!}
+                                {!! Form::select('event_id', [''=>'Choose Event'] + $events, null,  ['class'=>'form-control']) !!}
+                            </div>
+
+                            <br>
+
+                            <div class="form-group">
+                                {!! Form::label('photo_id', 'Photo: ') !!}
+                                {!! Form::file('photo_id') !!}
                             </div>
 
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer">
-                            <button class=" btn btn-primary" onclick="location.href='{{route('admin.campuses.index')}}'">Back</button>
+                            {!! Form::submit('Submit', ['class'=>'btn btn-primary']) !!}
                         </div>
-
+                        {!! Form::close() !!}
 
                     </div>
                     <!-- /.card -->
@@ -71,5 +70,12 @@
         </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
+    @include('includes.file_errors')
 
 @endsection
+
+
+
+
+
+

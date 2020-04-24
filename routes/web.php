@@ -49,4 +49,12 @@ Route::group(['middleware'=>'admin'], function (){
         'edit'=>'admin.sports.edit',
         'show'=>'admin.sports.show'
     ]]);
+
+    Route::resource('admin/teams', 'AdminTeamsController',['names'=>[
+        'index'=>'admin.teams.index',
+        'create'=>'admin.teams.create',
+        'store'=>'admin.teams.store',
+        'edit'=>'admin.teams.edit',
+        'show'=>'admin.teamsd.show'
+    ]]);
 });

@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Event;
-use App\Http\Requests\SportRequest;
-use App\Sport;
+use App\Http\Requests\TeamRequest;
+use App\Photo;
+use App\Team;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
-
-class AdminSportsController extends Controller
+class AdminTeamsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +18,8 @@ class AdminSportsController extends Controller
      */
     public function index()
     {
-        $sports = Sport::all();
-        return view('admin.sports.index', compact('sports'));
+        $teams = Team::all();
+        return view('admin.teams.index', compact('teams'));
     }
 
     /**
@@ -30,7 +30,7 @@ class AdminSportsController extends Controller
     public function create()
     {
         $events = Event::pluck('name', 'id')->all();
-        return view('admin.sports.create', compact('events'));
+        return view('admin.teams.create', compact('events'));
     }
 
     /**
@@ -39,10 +39,19 @@ class AdminSportsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(SportRequest $request)
+    public function store(TeamRequest $request)
     {
-        Sport::create($request->all());
-        return redirect('admin/sports');
+        $input = $request->all();
+
+        if($file= $request->file('photo_id')){
+            $name = time() . $file->getClientOriginalName();
+            $file->move('images', $name);
+            $photo = Photo::create(['file'=>$name]);
+            $input['photo_id'] = $photo->id;
+        }
+
+        Team::create($input);
+        return redirect('admin/teams');
     }
 
     /**
@@ -64,9 +73,9 @@ class AdminSportsController extends Controller
      */
     public function edit($id)
     {
-        $sport = Sport::findOrFail($id);
-        $events = Event::pluck('name', 'id')->all();
-        return view('admin.sports.edit', compact('sport','events'));
+        $team = Team::findOrFail($id);
+        $events = Event::pluck('name','id')->all();
+        return view('admin.teams.edit', compact('team', 'events'));
     }
 
     /**
@@ -78,9 +87,9 @@ class AdminSportsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $sport = Sport::findOrFail($id);
-        $sport->update($request->all());
-        return redirect('admin/sports');
+        $team = Team::findOrFail($id);
+        $team->update($request->all());
+        return redirect('admin/teams');
     }
 
     /**
@@ -91,8 +100,8 @@ class AdminSportsController extends Controller
      */
     public function destroy($id)
     {
-        Sport::findOrFail($id)->delete();
-        Session::flash('deleted_sport', 'The sport has been deleted');
-        return redirect('admin/sports');
+        Team::findOrFail($id)->delete();
+        Session::flash('deleted_team', 'The team has been deleted');
+        return redirect('admin/teams');
     }
 }
