@@ -12,11 +12,14 @@ class Team extends Model
         'event_id'
     ];
 
-    public function event(){
-        return $this->belongsTo('App\Event');
+    public function events(){
+        return $this->belongsToMany('App\Event', 'event_team', 'event_id', 'team_id')
+            ->withTimestamps();
     }
 
     public function photo(){
         return $this->belongsTo('App\Photo');
     }
+
+
 }

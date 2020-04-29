@@ -29,7 +29,6 @@ class AdminTeamsController extends Controller
      */
     public function create()
     {
-        $events = Event::pluck('name', 'id')->all();
         return view('admin.teams.create', compact('events'));
     }
 

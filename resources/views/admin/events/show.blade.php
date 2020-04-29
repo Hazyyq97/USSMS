@@ -49,6 +49,16 @@
                                             <td><p class="text-primary">{{$event->date_range}}</p> </td>
                                         </tr>
 
+                                        <tr>
+
+                                            <td>Participant Team:  </td>
+                                            <td>
+                                                @foreach($event->teams as $team)
+                                                    <p class="text-primary">{{$team->name}}</p>
+                                                @endforeach
+                                            </td>
+                                        </tr>
+
                                         </tbody>
                                     </table>
                                 </div>

@@ -29,7 +29,7 @@
                         <!-- /.card-header -->
                         <!-- form start -->
                         <div class="class col-sm-3">
-                            <img src="{{$event->photo->file}}" alt="" class="img-responsive">
+                            <img height="60" src="{{$event->photo ? $event->photo->file : '/images/blankUser.png'}}" alt="" class="img-responsive">
                         </div>
                         <div class="card-body">
                             {!! Form::model($event,['method' => 'PATCH', 'action' => ['AdminEventsController@update', $event->id], 'files'=>true]) !!}

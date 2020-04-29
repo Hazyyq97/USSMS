@@ -47,6 +47,16 @@
                             </div>
 
                             <div class="form-group">
+                                {!! Form::label('team[]', 'Team: ') !!}
+                                {!! Form::select('teams[]',  $teams, null,  ['class'=>'form-control', 'multiple']) !!}
+                            </div>
+
+                            <div class="form-group">
+                                {!! Form::label('sports[]', 'Team: ') !!}
+                                {!! Form::select('sports[]',  $sports, null,  ['class'=>'form-control', 'multiple']) !!}
+                            </div>
+
+                            <div class="form-group">
                                 <i class="far fa-calendar-alt"></i>     {!! Form::label('date_range', 'Date Range: ') !!}
                                 {!! Form::text('date_range', null, ['class'=>'form-control', 'placeholder'=>'Enter start date', 'id'=>'datepicker']) !!}
                             </div>

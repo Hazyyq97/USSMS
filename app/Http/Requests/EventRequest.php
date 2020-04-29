@@ -28,6 +28,7 @@ class EventRequest extends FormRequest
             'detail' => 'required',
             'campus_id' => 'required',
             'date_range' => 'required',
+
         ];
     }
 }

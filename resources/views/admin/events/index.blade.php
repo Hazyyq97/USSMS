@@ -18,7 +18,6 @@
                     <th>Event Name</th>
                     <th>Organizer</th>
                     <th>Date Range</th>
-                    <th style="lenght: 10px"></th>
                     <th style="width: 10px"></th>
                     <th style="width: 10px"></th>
                     <th style="width: 10px"></th>
@@ -32,7 +31,7 @@
                             <td>{{$event->name}}</td>
                             <td>{{$event->campus ? $event->campus->shortname : 'No Organizer'}}</td>
                             <td>{{$event->date_range}}</td>
-                            <td><button class="btn btn-warning">Assign Team</button> </td>
+
                             <td><button  class="btn btn-primary" onclick="location.href='{{route('admin.events.show', $event->id)}}'">View</button> </td>
                             <td><button type="button" class="btn btn-success" onclick="location.href='{{route('admin.events.edit', $event->id)}}'">Edit</button> </td>
                             <td>

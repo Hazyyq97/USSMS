@@ -25,7 +25,7 @@ class TeamRequest extends FormRequest
     {
         return [
             'name'=>'required',
-            'event_id'=>'required',
+
 
         ];
     }

@@ -6,6 +6,8 @@ use App\Campus;
 use App\Event;
 use App\Http\Requests\EventRequest;
 use App\Photo;
+use App\Sport;
+use App\Team;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -30,8 +32,12 @@ class AdminEventsController extends Controller
     public function create()
     {
         $campuses = Campus::pluck('shortname', 'id')->all();
-        return view('admin.events.create', compact('campuses'));
+        $sports = Sport::pluck('name', 'id')->all();
+        $teams = Team::pluck('name','id')->all();
+        return view('admin.events.create', compact('campuses', 'teams', 'sports'));
     }
+
+
 
     /**
      * Store a newly created resource in storage.
@@ -41,16 +47,23 @@ class AdminEventsController extends Controller
      */
     public function store(EventRequest $request)
     {
-        $input = $request->all();
+
+        $event = new Event(request(['name', 'detail', 'campus_id','date_range']));
 
         if($file= $request->file('photo_id')){
             $name = time() . $file->getClientOriginalName();
             $file->move('images', $name);
             $photo = Photo::create(['file'=>$name]);
-            $input['photo_id'] = $photo->id;
+            $event['photo_id'] = $photo->id;
         }
 
-        Event::create($input);
+        $event->save();
+
+        $event->teams()->attach(request('teams'));
+        $event->sports()->attach(request('sports'));
+
+
+
         return redirect('admin/events');
 
 
@@ -65,8 +78,11 @@ class AdminEventsController extends Controller
     public function show($id)
     {
         $event = Event::findOrFail($id);
+
         return view('admin.events.show', compact('event'));
     }
+
+
 
     /**
      * Show the form for editing the specified resource.

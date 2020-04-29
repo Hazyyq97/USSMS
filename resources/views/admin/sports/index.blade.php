@@ -16,7 +16,6 @@
                 <tr>
                     <th style="width: 10px">Id</th>
                     <th>Sport Name</th>
-                    <th>Event</th>
                     <th style="width: 10px"></th>
                     <th style="width: 10px"></th>
                 </tr>
@@ -27,7 +26,6 @@
                         <tr>
                             <td>{{$sport->id}}</td>
                             <td>{{$sport->name}}</td>
-                            <td>{{$sport->event ? $sport->event->name : 'No Event'}}</td>
                             <td><button type="button" class="btn btn-success" onclick="location.href='{{route('admin.sports.edit', $sport->id)}}'">Edit</button> </td>
                             <td>
                                 {!! Form::open( ['method' => 'DELETE', 'action' => ['AdminSportsController@destroy', $sport->id]]) !!}

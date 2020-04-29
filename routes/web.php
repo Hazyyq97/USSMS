@@ -39,7 +39,8 @@ Route::group(['middleware'=>'admin'], function (){
         'create'=>'admin.events.create',
         'store'=>'admin.events.store',
         'edit'=>'admin.events.edit',
-        'show'=>'admin.events.show'
+        'show'=>'admin.events.show',
+
     ]]);
 
     Route::resource('admin/sports', 'AdminSportsController',['names'=>[
@@ -55,6 +56,7 @@ Route::group(['middleware'=>'admin'], function (){
         'create'=>'admin.teams.create',
         'store'=>'admin.teams.store',
         'edit'=>'admin.teams.edit',
-        'show'=>'admin.teamsd.show'
+        'show'=>'admin.teams.show',
+
     ]]);
 });

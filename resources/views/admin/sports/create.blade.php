@@ -36,12 +36,6 @@
                                 {!! Form::text('name', null, ['class'=>'form-control', 'placeholder'=>'Enter sport name']) !!}
                             </div>
 
-
-                            <div class="form-group">
-                                {!! Form::label('event_id', 'Event: ') !!}
-                                {!! Form::select('event_id', [''=>'Choose Event'] + $events, null,  ['class'=>'form-control']) !!}
-                            </div>
-
                             <br>
 
                         </div>

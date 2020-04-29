@@ -17,7 +17,6 @@
                     <th style="width: 10px">Id</th>
                     <th>Picture</th>
                     <th>Team Name</th>
-                    <th>Event</th>
                     <th style="width: 10px"></th>
                     <th style="width: 10px"></th>
                 </tr>
@@ -29,7 +28,6 @@
                             <td>{{$team->id}}</td>
                             <td><img style="width:60px;height:60px" src="{{$team->photo ? $team->photo->file : '/images/blankUser.png'}}"></td>
                             <td>{{$team->name}}</td>
-                            <td>{{$team->event ? $team->event->name : 'No Event'}}</td>
                             <td><button type="button" class="btn btn-success" onclick="location.href='{{route('admin.teams.edit', $team->id)}}'">Edit</button> </td>
                             <td>
                                 {!! Form::open( ['method' => 'DELETE', 'action' => ['AdminTeamsController@destroy', $team->id]]) !!}

@@ -16,7 +16,6 @@ class CreateSportsTable extends Migration
         Schema::create('sports', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
-            $table->integer('event_id')->unsigned()->index()->nullable();
             $table->timestamps();
         });
     }

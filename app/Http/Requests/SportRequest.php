@@ -25,7 +25,7 @@ class SportRequest extends FormRequest
     {
         return [
             'name'=>'required',
-            'event_id'=>'required',
+
         ];
     }
 }

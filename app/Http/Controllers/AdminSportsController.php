@@ -29,7 +29,7 @@ class AdminSportsController extends Controller
      */
     public function create()
     {
-        $events = Event::pluck('name', 'id')->all();
+
         return view('admin.sports.create', compact('events'));
     }
 

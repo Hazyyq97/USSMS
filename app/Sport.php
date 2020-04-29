@@ -8,7 +8,8 @@ class Sport extends Model
 {
     protected $fillable= ['name', 'event_id'];
 
-    public function event(){
-        return $this->belongsTo('App\Event');
+    public function events(){
+        return $this->belongsToMany('App\Event', 'event_team', 'event_id', 'sport_id')
+            ->withTimestamps();
     }
 }
