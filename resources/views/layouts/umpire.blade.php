@@ -54,11 +54,11 @@
                     <div class="dropdown-divider"></div>
                     <a href="{{ route('logout') }}" class="dropdown-item" onclick="event.preventDefault();
                           document.getElementById('logout-form').submit();">
-                            <i class="fas fa-sign-out-alt"></i>
-                            {{ __('Log out') }}</a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
+                        <i class="fas fa-sign-out-alt"></i>
+                        {{ __('Log out') }}</a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
                     </a>
                 </div>
             </li>
@@ -106,7 +106,7 @@
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-university"></i>
                             <p>
-                                Manage Campus
+                                Manage Schedule
                                 <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
@@ -114,13 +114,13 @@
                             <li class="nav-item">
                                 <a href="{{route('admin.campuses.index')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>All campus</p>
+                                    <p>All Schedule</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{route('admin.campuses.create')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Create Campus</p>
+                                    <p>Create Schedule</p>
                                 </a>
                             </li>
                         </ul>
@@ -131,7 +131,7 @@
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-calendar-week"></i>
                             <p>
-                                Events
+                                Manage Result
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
@@ -139,13 +139,13 @@
                             <li class="nav-item">
                                 <a href="{{route('admin.events.index')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>All Events</p>
+                                    <p>All Result</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{route('admin.events.create')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Create Events</p>
+                                    <p>Create Result</p>
                                 </a>
                             </li>
                         </ul>
@@ -156,7 +156,7 @@
                         <a href="#" class="nav-link">
                             <i class="nav-icon far fa-futbol"></i>
                             <p>
-                                Sports
+                                Manage Medal
                                 <i class="fas fa-angle-left right"></i>
                             </p>
                         </a>
@@ -164,91 +164,17 @@
                             <li class="nav-item">
                                 <a href="{{route('admin.sports.index')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>All Sport</p>
+                                    <p>Medal Standing</p>
                                 </a>
                             </li>
                             <li class="nav-item">
                                 <a href="{{route('admin.sports.create')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Create Sport</p>
+                                    <p>Add Medal Standing</p>
                                 </a>
                             </li>
                         </ul>
                     </li>
-                    <!-- Sport starts -->
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-air-freshener"></i>
-                            <p>
-                                Participant Team
-                                <i class="fas fa-angle-left right"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{route('admin.teams.index')}}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>All Team</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{route('admin.teams.create')}}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Create Team</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- Team Manager Start -->
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-users"></i>
-                            <p>
-                                Manager
-                                <i class="fas fa-angle-left right"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{route('admin.managers.index')}}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>All Manager</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{route('admin.managers.create')}}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Create Manager</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- Team Manager Ends-->
-                    <!-- Umpire Start -->
-                    <li class="nav-item has-treeview">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon  fas fa-user"></i>
-                            <p>
-                                Umpire
-                                <i class="fas fa-angle-left right"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="pages/forms/general.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>All Umpire</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="pages/forms/advanced.html" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Create Umpire</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <!-- Umpire Ends -->
 
                     <!-- End of Sport-->
                 </ul>

@@ -59,6 +59,16 @@
                                             </td>
                                         </tr>
 
+                                        <tr>
+
+                                            <td>Sport Contested:  </td>
+                                            <td>
+                                                @foreach($event->sports as $sport)
+                                                    <p class="text-primary">{{$sport->name}}</p>
+                                                @endforeach
+                                            </td>
+                                        </tr>
+
                                         </tbody>
                                     </table>
                                 </div>
@@ -67,7 +77,7 @@
                         </div>
                         <!-- /.card-body -->
                         <div class="card-footer">
-                            <button class="btn-primary" onclick="location.href='{{route('admin.campuses.index')}}'">Back</button>
+                            <button class="btn btn-primary" onclick="location.href='{{route('admin.campuses.index')}}'">Back</button>
                         </div>
 
 

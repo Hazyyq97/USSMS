@@ -12,4 +12,5 @@ class Sport extends Model
         return $this->belongsToMany('App\Event', 'event_team', 'event_id', 'sport_id')
             ->withTimestamps();
     }
+
 }

@@ -30,6 +30,9 @@ class Event extends Model
     public function sports(){
         return $this->belongsToMany('App\Sport');
     }
+
+
+
 }
 
 

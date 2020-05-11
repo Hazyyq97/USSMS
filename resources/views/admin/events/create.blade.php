@@ -52,7 +52,7 @@
                             </div>
 
                             <div class="form-group">
-                                {!! Form::label('sports[]', 'Team: ') !!}
+                                {!! Form::label('sports[]', 'Sport: ') !!}
                                 {!! Form::select('sports[]',  $sports, null,  ['class'=>'form-control', 'multiple']) !!}
                             </div>
 

@@ -32,6 +32,9 @@ class LoginController extends Controller
         if (auth()->user()->role_id == '1') {
             return '/admin';
         }
+        else if (auth()->user()->role_id == '2'){
+            return '/umpire';
+        }
         return '/home';
     }
 

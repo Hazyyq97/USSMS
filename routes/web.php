@@ -59,4 +59,22 @@ Route::group(['middleware'=>'admin'], function (){
         'show'=>'admin.teams.show',
 
     ]]);
+
+
+    Route::resource('admin/managers', 'AdminManagersController',['names'=>[
+        'index'=>'admin.managers.index',
+        'create'=>'admin.managers.create',
+        'store'=>'admin.managers.store',
+        'edit'=>'admin.managers.edit',
+        'show'=>'admin.managers.show',
+
+    ]]);
+    Route::get('admin/managers/create/ajax/{$id}', array('as'=>'admin.managers.create.ajax', 'uses'=>'AdminManagersController@createAjax'));
+
+});
+
+Route::group(['middleware'=>'umpire'], function(){
+    Route::get('/umpire', function(){
+        return view('umpire.index');
+    });
 });
