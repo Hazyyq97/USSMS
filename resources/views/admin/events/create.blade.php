@@ -53,7 +53,7 @@
 
                             <div class="form-group">
                                 {!! Form::label('sports[]', 'Sport: ') !!}
-                                {!! Form::select('sports[]',  $sports, null,  ['class'=>'form-control', 'multiple']) !!}
+                                {!! Form::select('sports[]',  [''=>'Choose Campus'] + $sports, null,  ['class'=>'form-control', 'multiple']) !!}
                             </div>
 
                             <div class="form-group">

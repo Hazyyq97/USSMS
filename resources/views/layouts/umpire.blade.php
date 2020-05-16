@@ -112,13 +112,13 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route('admin.campuses.index')}}" class="nav-link">
+                                <a href="{{route('umpire.schedules.index')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>All Schedule</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('admin.campuses.create')}}" class="nav-link">
+                                <a href="{{route('umpire.schedules.create')}}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Create Schedule</p>
                                 </a>
@@ -137,13 +137,13 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route('admin.events.index')}}" class="nav-link">
+                                <a href="#" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>All Result</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('admin.events.create')}}" class="nav-link">
+                                <a href="#" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Create Result</p>
                                 </a>
@@ -162,13 +162,13 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{route('admin.sports.index')}}" class="nav-link">
+                                <a href="#" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Medal Standing</p>
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="{{route('admin.sports.create')}}" class="nav-link">
+                                <a href="#" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Add Medal Standing</p>
                                 </a>

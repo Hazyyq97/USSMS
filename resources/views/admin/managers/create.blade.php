@@ -56,10 +56,11 @@
 
 
                             <div class="form-group">
+                                {!! Form::label('', 'Event: ') !!}
                                 <select name="event" class="form-control">
                                     <option value="">--- Select Event ---</option>
                                     @foreach ($events as $key => $value)
-                                        <option value="{{ $value }}">{{ $value }}</option>
+                                        <option value="{{ $key }}">{{ $value }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -68,6 +69,13 @@
                                 <label for="title">Select Team:</label>
                                 <select name="team" class="form-control">
                                 </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="title">Select Sport:</label>
+                                <select name="sport" class="form-control">
+                                </select>
+                            </div>
                             <br>
                             <div class="form-group">
                                 {!! Form::label('photo_id', 'Photo: ') !!}
@@ -107,18 +115,39 @@
                 var eventID = $(this).val();
                 if(eventID) {
                     $.ajax({
-                        url:'/admin/managers/createa/ajax/'+eventID,
+                        url: '/admin/managers/create/ajax1/'+encodeURI(eventID),
                         type: "GET",
                         dataType: "json",
                         success:function(data) {
                             $('select[name="team"]').empty();
                             $.each(data, function(key, value) {
-                                $('select[name="team"]').append('<option value="'+ value +'">'+ value +'</option>');
+                                $('select[name="team"]').append('<option value="'+ key +'">'+ value +'</option>');
                             });
                         }
                     });
                 }else{
                     $('select[name="team"]').empty();
+                }
+            });
+        });
+
+        $(document).ready(function() {
+            $('select[name="event"]').on('change', function() {
+                var eventID = $(this).val();
+                if(eventID) {
+                    $.ajax({
+                        url: '/admin/managers/create/ajax2/'+encodeURI(eventID),
+                        type: "GET",
+                        dataType: "json",
+                        success:function(data) {
+                            $('select[name="sport"]').empty();
+                            $.each(data, function(key, value) {
+                                $('select[name="sport"]').append('<option value="'+ key +'">'+ value +'</option>');
+                            });
+                        }
+                    });
+                }else{
+                    $('select[name="sport"]').empty();
                 }
             });
         });

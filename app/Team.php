@@ -13,7 +13,7 @@ class Team extends Model
     ];
 
     public function events(){
-        return $this->belongsToMany('App\Event', 'event_team', 'event_id', 'team_id')
+        return $this->belongsToMany('App\Event', 'event_team', 'event_id', 'team_id')->withPivot('seen')
             ->withTimestamps();
     }
 

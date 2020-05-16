@@ -69,7 +69,9 @@ Route::group(['middleware'=>'admin'], function (){
         'show'=>'admin.managers.show',
 
     ]]);
-    Route::get('admin/managers/create/ajax/{$id}', array('as'=>'admin.managers.create.ajax', 'uses'=>'AdminManagersController@createAjax'));
+
+    Route::get('admin/managers/create/ajax1/{id}', array('as'=>'admin.managers.create.ajax', 'uses'=>'AdminManagersController@teamAjax'));
+    Route::get('admin/managers/create/ajax2/{id}', array('as'=>'admin.managers.create.ajax', 'uses'=>'AdminManagersController@sportAjax'));
 
 });
 
@@ -77,4 +79,13 @@ Route::group(['middleware'=>'umpire'], function(){
     Route::get('/umpire', function(){
         return view('umpire.index');
     });
+
+    Route::resource('umpire/schedules', 'UmpireSchedulesController',['names'=>[
+        'index'=>'umpire.schedules.index',
+        'create'=>'umpire.schedules.create',
+        'store'=>'umpire.schedules.store',
+        'edit'=>'umpire.schedules.edit',
+        'show'=>'umpire.schedules.show',
+    ]]);
+
 });

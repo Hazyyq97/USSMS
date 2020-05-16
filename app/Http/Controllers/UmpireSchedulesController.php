@@ -2,27 +2,28 @@
 
 namespace App\Http\Controllers;
 
+
+
+
 use App\Event;
-use App\Manager;
 use App\Schedule;
-use App\Team;
+use App\Sport;
+use App\Umpire;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
-class AdminManagersController extends Controller
+class UmpireSchedulesController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-
     public function index()
     {
-
-        $managers= Manager::all();
-        return view('admin.managers.index', compact('managers'));
+        $schedules = Schedule::all();
+        return view('umpire.schedules.index', compact('schedules'));
     }
 
     /**
@@ -32,28 +33,19 @@ class AdminManagersController extends Controller
      */
     public function create()
     {
+       $sports = Umpire::with('sports')->get();
+       $events = Umpire::with('events')->get();
+       $getEventId = Umpire::with('events')->first();
+       $eventId = $getEventId->id;
+       $teams = Event::findOrFail($eventId);
+       $selectedTeams = $teams->teams->all();
 
-        $events = Event::pluck('name','id');
-        return view('admin.managers.create', compact('events'));
+       return view('umpire.schedules.create' , compact('sports', 'events', 'selectedTeams'));
+
+
+
 
     }
-
-    public function teamAjax($id)
-    {
-        $events = Event::findOrFail($id);
-        $teams = $events->teams->pluck('name','id');
-        return json_encode($teams);
-    }
-    public function sportAjax($id)
-    {
-        $events = Event::findOrFail($id);
-        $sports = $events->sports->pluck('name','id');
-        return json_encode($sports);
-    }
-
-
-
-
 
     /**
      * Store a newly created resource in storage.
@@ -86,7 +78,14 @@ class AdminManagersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $schedule = Schedule::findOrFail($id);
+
+        $getEventId = Umpire::with('events')->first();
+        $eventId = $getEventId->id;
+        $teams = Event::findOrFail($eventId);
+        $selectedTeams = $teams->teams->all();
+
+        return view('umpire.schedules.edit', compact('schedule', 'selectedTeams'));
     }
 
     /**
@@ -98,7 +97,9 @@ class AdminManagersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+        Schedule::whereId($id)->first()->update($input);
+        return redirect('umpire/schedules');
     }
 
     /**
@@ -109,6 +110,8 @@ class AdminManagersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Schedule::findOrFail($id)->delete();
+        Session::flash('deleted_schedule', 'The schedule has been deleted');
+        return redirect('umpire/schedules');
     }
 }
