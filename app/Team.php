@@ -21,5 +21,9 @@ class Team extends Model
         return $this->belongsTo('App\Photo');
     }
 
+    public function results(){
+        return $this->hasMany('App\Results');
+    }
+
 
 }

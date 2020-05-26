@@ -8,7 +8,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Create Schedule</h1>
+                    <h1>Create Result </h1>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -28,8 +28,9 @@
                         <!-- /.card-header -->
                         <!-- form start -->
 
-                        <div class="card-body">
-                            {!! Form::open(['method' => 'POST', 'action' => 'UmpireSchedulesController@store']) !!}
+                        <br class="card-body">
+
+                            {!! Form::open(['method' => 'POST', 'action' => 'UmpireResultsController@store']) !!}
 
                             <div class="form-group">
                                 {!! Form::label('', 'Sport: ') !!}
@@ -87,12 +88,23 @@
 
                             </div>
 
-                                <div class="form-group">
-                                    {!! Form::label('title', 'Venue: ') !!}
-                                    {!! Form::text('', null, ['class'=>'form-control']) !!}
-                                </div>
+                            <div class="form-group">
+                                {!! Form::label('name[]', 'Add/Remove Game Set: ') !!}
+                                <button type="button" name="add" id="add" class="btn btn-success">+</button>
+                            </div>
 
-                        </div>
+                            <div id ='dynamic_field'>
+                            </div>
+
+                        </br>
+                            <div class="form-group">
+                                {!! Form::label('', 'Game Point: ') !!}
+                                {!! Form::text('game_pointA', null) !!} :  {!! Form::text('game_pointB', null) !!}
+                            </div>
+
+
+
+
                         <!-- /.card-body -->
                         <div class="card-footer">
                             {!! Form::submit('Submit', ['class'=>'btn btn-primary']) !!}
@@ -104,17 +116,45 @@
                 </div>
                 <!--/.col (left) -->
                 <!-- right column -->
-                <div class="col-md-6">
 
-                </div>
                 <!--/.col (right) -->
             </div>
             <!-- /.row -->
         </div><!-- /.container-fluid -->
+
     </section>
     <!-- /.content -->
     @include('includes.file_errors')
 
+@endsection
+
+@section('scripts')
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var i=0;
+            $('#add').click(function(){
+                i++;
+                $('#dynamic_field').append('<tr id="row'+i+'"><td><input type="text" name="a_set'+i+'" placeholder="Team A Set '+ i + '"   class=""/></td>  <td> VS </td> <td><input type="text" name="b_set'+i+'" placeholder="Team B Set '+ i + '"   class=""/></td><td><button type="button" name="remove" id="'+i+'" class="btn-danger btn_remove" >X</button></td></tr></br>');
+            });
+            $(document).on('click', '.btn_remove', function(){
+                var button_id = $(this).attr("id");
+                $('#row'+button_id+'').remove();
+            });
+            // $('#submit').click(function(){
+            //     $.ajax({
+            //         // url:"name.php",
+            //         method:"POST",
+            //         data:$('#add_name').serialize(),
+            //         success:function(data)
+            //         {
+            //             alert(data);
+            //             $('#add_name')[0].reset();
+            //         }
+            //     });
+            // });
+        });
+    </script>
 @endsection
 
 

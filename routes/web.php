@@ -88,4 +88,21 @@ Route::group(['middleware'=>'umpire'], function(){
         'show'=>'umpire.schedules.show',
     ]]);
 
+    Route::resource('umpire/results', 'UmpireResultsController',['names'=>[
+        'index'=>'umpire.results.index',
+        'create'=>'umpire.results.create',
+        'store'=>'umpire.results.store',
+        'edit'=>'umpire.results.edit',
+        'show'=>'umpire.results.show',
+    ]]);
+
+    Route::resource('umpire/medals', 'UmpireMedalsController',['names'=>[
+        'index'=>'umpire.medals.index',
+        'create'=>'umpire.medals.create',
+        'store'=>'umpire.medals.store',
+        'edit'=>'umpire.medals.edit',
+        'show'=>'umpire.medals.show',
+    ]]);
+
+
 });
